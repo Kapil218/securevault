@@ -7,7 +7,7 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <main className="fullscreen-bg">
-      <main className="mainContent">
+      <main className="mainContent ">
 
         <App />
       </main>

@@ -11,13 +11,20 @@ function App() {
   return (
     <Router >
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/share" element={<Share />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/article" element={<Article />} />
-        <Route path="/sign" element={<Form />} />
-      </Routes>
+      <div className="container" style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh"
+      }}>
+        <Routes >
+          <Route path="/" element={<Home />} />
+          <Route path="/share" element={<Share />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/article" element={<Article />} />
+          <Route path="/sign" element={<Form />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

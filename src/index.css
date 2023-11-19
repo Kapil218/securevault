@@ -1,4 +1,5 @@
 .fullscreen-bg {
+  overflow: hidden;
   background:#393E46;
   background-size: cover;
   background-position: center;
