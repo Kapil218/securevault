@@ -6,16 +6,17 @@ import Home from './components/Home';
 import Article from './components/Article';
 import Support from './components/Support';
 import Share from './components/Share';
-
+import Form from './components/FormComponent';
 function App() {
   return (
-    <Router>
+    <Router >
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/share" element={<Share />} />
         <Route path="/support" element={<Support />} />
         <Route path="/article" element={<Article />} />
+        <Route path="/sign" element={<Form />} />
       </Routes>
     </Router>
   );

@@ -1,11 +1,11 @@
 .fullscreen-bg {
-  background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+  background:#393E46;
   background-size: cover;
   background-position: center;
   height: 100vh;
   color: #fff; /* Text color */
 }
 
-.content {
+.mainContent {
   z-index: 1; /* Ensure content is above the background */
 }
