@@ -10,7 +10,7 @@ function Share() {
                 alignItems: "center",
                 width: "60vw"
             }}>
-                <div className="card" style={{ background: "#DCDCDC" }}>
+                <div style={{ background: "#DCDCDC" }}>
                     <div className="card-body">
                         <div className="row d-flex justify-content-between">
                             {/* Left Section for Image */}
