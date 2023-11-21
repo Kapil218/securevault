@@ -1,6 +1,5 @@
 .card-container {
     width: 100vw;
-    height: 65vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,22 +10,18 @@
     display: flex;
     align-items: center;
     gap: 20px;
+
   }
   
   .card {
+    background-image: url("../assets/abstract-digital-grid-black-background.jpg");
     width: 200px;
-    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid ;
+    border-radius: 16px;
   }
-  
-  /* .card p {
-    font-size: 70px;
-    font-weight: 600;
-    color: #ffffff;
-    opacity: 0.4;
-  } */
   
   .action-btns {
     display: flex;
@@ -50,3 +45,4 @@
     color: #ffffff;
     background-color: #002d36;
   }
+  

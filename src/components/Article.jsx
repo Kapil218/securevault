@@ -1,7 +1,8 @@
 import React from 'react';
 import "./support.css"
 import { useRef, useState } from "react";
-const Article = () => {
+import { withTheme } from 'styled-components';
+const Support = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
 
     const containerRef = useRef();
@@ -19,10 +20,11 @@ const Article = () => {
         containerRef.current.scrollLeft = newScrollPosition;
     };
     return (
-        <div className="container ">
+        <div className="container">
             {/* Search Bar */}
-            <h5 className='text-center mb-4'>Guest Viewer</h5>
-
+            <h5 className='text-center mb-3 mt-5'>YOUR ACCOUNT</h5>
+            <h5 className='text-center ' ><span style={{ border: "1px solid white", padding: "5px", borderRadius: "10px" }}>78XX....XXX77</span></h5>
+            <p className='d-flex flex-row-reverse' ><button type="button" style={{ borderRadius: "16px" }} className="btn btn-outline-light" ><h5>Upload</h5></button></p>
             <div className="row justify-content-center mb-5">
                 <div className="col-md-6">
                     <div className="input-group mb-3">
@@ -56,11 +58,12 @@ const Article = () => {
 
                     <div className="card-box">
                         {[1, 2, 3, 4, 5, 6].map((cardNumber) => (
-                            <div key={cardNumber} className="card" style={{ width: '300px', margin: '0.5rem' }}>
-                                <div className="card-body" style={{ color: "black" }}>
-                                    <h5 className="card-title">Card {cardNumber}</h5>
-                                    <p className="card-text">This is some card content.</p>
-                                    <h7>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa accusantium ab inventore molestiae officia ex laboriosam ea </h7>
+                            <div key={cardNumber} className="card" style={{ width: '400px', margin: '0.5rem' }}>
+                                <div className="card-body text-center" style={{ color: "black" }}>
+                                    <h5 className="card-title text-light" >Card {cardNumber}</h5>
+                                    <p className="card-text  text-light">This is some card content.</p>
+                                    <p className='text-light'>Lorem ipsum d erw rer olor sit amet consectr erw etur dsfds fdsfds fdsf fadipisicing elit. Ipsa accusantium ab inventore molestiae officia ex laboriosam ea rfewr ew </p>
+                                    <br /> <button type="button" class="btn btn-info ">Info</button>
 
                                 </div>
                             </div>
@@ -79,4 +82,4 @@ const Article = () => {
     );
 };
 
-export default Article;
+export default Support;

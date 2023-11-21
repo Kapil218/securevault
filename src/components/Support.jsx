@@ -56,11 +56,12 @@ const Support = () => {
 
                     <div className="card-box">
                         {[1, 2, 3, 4, 5, 6].map((cardNumber) => (
-                            <div key={cardNumber} className="card" style={{ width: '300px', margin: '0.5rem' }}>
-                                <div className="card-body" style={{ color: "black" }}>
-                                    <h5 className="card-title">Card {cardNumber}</h5>
-                                    <p className="card-text">This is some card content.</p>
-                                    <h7>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa accusantium ab inventore molestiae officia ex laboriosam ea </h7>
+                            <div key={cardNumber} className="card" style={{ width: '400px', margin: '0.5rem' }}>
+                                <div className="card-body text-center" style={{ color: "black" }}>
+                                    <h5 className="card-title text-light" >Card {cardNumber}</h5>
+                                    <p className="card-text  text-light">This is some card content.</p>
+                                    <p className='text-light'>Lorem ipsum d erw rer olor sit amet consectr erw etur dsfds fdsfds fdsf fadipisicing elit. Ipsa accusantium ab inventore molestiae officia ex laboriosam ea rfewr ew </p>
+                                    <br /> <button type="button" class="btn btn-info ">Info</button>
 
                                 </div>
                             </div>

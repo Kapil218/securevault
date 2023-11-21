@@ -4,9 +4,9 @@ import secureVaultLogo from '../assets/homeimage-removebg-preview.png';
 
 function Home() {
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 container p-5 ">
-      <div className="row no-gutters  rounded-5 justify-content-between  p-5" style={{ borderRadius: "20px" }}>
-        <div className="col-7">
+    <div className="d-flex justify-content-center align-items-center vh-100 container  ">
+      <div className="row  rounded-5 justify-content-between" style={{ borderRadius: "20px" }}>
+        <div className="col-8">
           <div className="card-body">
             <h2 className="card-title">EMPOWERING LEGAL </h2>
             <h2 className="card-title">SECURITY </h2>
