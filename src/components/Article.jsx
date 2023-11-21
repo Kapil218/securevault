@@ -4,9 +4,8 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-dapp";
 import axios from "axios";
 import React from "react";
-import "./support.css";
+import "./article.css";
 import { useRef, useState, useEffect } from "react";
-import { withTheme } from "styled-components";
 
 const Support = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -101,12 +100,8 @@ const Support = () => {
       console.log("got file", file);
       try {
         const ImgURL = await pinFileToIPFS();
-        loadVal(false);
-        loadVal(true);
         const op = await contract.methods.add(ImgURL, address).send();
-        loadVal(false);
         await op.confirmation();
-        console.log("uploaded");
         alert("Uploaded successfully")
       } catch (error) {
         console.log(error);
@@ -142,7 +137,7 @@ const Support = () => {
     window.open(i, '_blank');
   };
   return (
-    <div className="container">
+    <div className="container" style={{ overflow: "auto" }}>
       {/* Search Bar */}
       {con && (
         <>
@@ -214,12 +209,13 @@ const Support = () => {
       )}
 
       {/* Cards with Scroll Buttons */}
+
       {images.length && (
+
         <div >
           {images.map((i) => (
             <span key={i} >
-              <img src={i} alt="" style={{ height: "200px" }} onClick={() => handleClick(i)} />
-
+              <img src={i} alt="" style={{ padding: "8px", height: "240px", width: "270px" }} onClick={() => handleClick(i)} />
             </span>
           ))}
         </div>

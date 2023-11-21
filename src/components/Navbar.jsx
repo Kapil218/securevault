@@ -47,11 +47,11 @@ function Navbar() {
                   Article
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/support" className="mx-1 btn btn-outline-info" data-mdb-ripple-color="dark">
                   Support
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link to="/share" className="mx-1 btn btn-info" data-mdb-ripple-color="dark">
                   Share
