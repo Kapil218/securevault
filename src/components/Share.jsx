@@ -8,13 +8,15 @@ function Share() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                width: "60vw"
+                width: "80vw"
             }}>
-                <div style={{ background: "#DCDCDC" }}>
+                <div >
                     <div className="card-body">
-                        <div className="row d-flex justify-content-between">
+                        <div className="row d-flex justify-content-between" >
+
                             {/* Left Section for Image */}
-                            <div className="col-md-5">
+
+                            <div className="col-md-4" style={{ background: "#DCDCDC", opacity: 0.9, borderRadius: "20px" }} >
                                 <img
                                     src={img}
                                     alt="Random Placeholder"
@@ -22,11 +24,10 @@ function Share() {
                                 />
                             </div>
 
-                            {/* Right Section for Form */}
-                            <div className="col-md-6 d-flex align-items-center justify-content-center">
-                                <form>
-                                    <h5 style={{ color: "black" }} className="text-center mb-4">SHARE</h5>
-                                    <h7 style={{ color: "black" }} className="text-center mb-4">Enter the address of the account you want to share the access with. </h7>
+                            <div className="col-md-5 d-flex align-items-center justify-content-center" style={{ borderTop: "0.2px solid #DCDCDC", borderBottom: "0.2px solid #DCDCDC" }} >
+                                <form >
+                                    <h5 className="text-center mb-4">SHARE</h5>
+                                    <h7 className="text-center mb-4">Enter the address of the account you want to share the access with. </h7>
                                     <div className="form-group mt-4 mb-2">
                                         <input
                                             type="email"
@@ -41,10 +42,12 @@ function Share() {
                                     </button>
                                 </form>
                             </div>
+                            {/* Right Section for Form */}
+
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 }

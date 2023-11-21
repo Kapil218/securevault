@@ -48,7 +48,7 @@ const Support = () => {
                 <div
                     ref={containerRef}
                     style={{
-                        width: "1300px",
+                        width: "100vw",
                         overflowX: "scroll",
                         scrollBehavior: "smooth",
                     }}

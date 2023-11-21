@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import secureVaultLogo from '../assets/securevault-logo-design-blockchain-based-778006610 1.png';
+import secureVaultLogo from '../assets/homeimage-removebg-preview.png';
 
 function Home() {
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 container p-5 " >
-      <div className="row no-gutters bg-dark rounded-5 justify-content-between  p-5" style={{ borderRadius: "20px" }}>
+    <div className="d-flex justify-content-center align-items-center vh-100 container p-5 ">
+      <div className="row no-gutters  rounded-5 justify-content-between  p-5" style={{ borderRadius: "20px" }}>
         <div className="col-7">
           <div className="card-body">
             <h2 className="card-title">EMPOWERING LEGAL </h2>
@@ -18,7 +18,7 @@ function Home() {
             </Link>
           </div>
         </div>
-        <div className="col-4 text-white text-center">
+        <div className="col-4 text-white text-center" >
           <img
             src={secureVaultLogo}
             alt="Logo"

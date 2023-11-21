@@ -6,7 +6,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark  " style={{ background: "#222831" }}>
+      <nav className="navbar navbar-expand-lg navbar-dark  " style={{ background: "#222831", opacity: "0.9" }}>
         <div className="container-fluid">
 
           <a className="navbar-brand" href="/">

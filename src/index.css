@@ -1,6 +1,6 @@
 .fullscreen-bg {
   overflow: hidden;
-  background:#393E46;
+  background-image: url('./assets/abstract-digital-grid-black-background.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;
