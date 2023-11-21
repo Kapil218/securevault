@@ -1,23 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import Article from './components/Article';
-import Support from './components/Support';
-import Share from './components/Share';
-import Form from './components/FormComponent';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Article from "./components/Article";
+import Support from "./components/Support";
+import Share from "./components/Share";
+import Form from "./components/FormComponent";
 function App() {
   return (
-    <Router >
+    <Router>
       <Navbar />
-      <div className="container" style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh"
-      }}>
-        <Routes >
+      <div
+        className="container"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/share" element={<Share />} />
           <Route path="/support" element={<Support />} />
@@ -37,33 +40,33 @@ export default App;
 // import { useEffect, useState } from "react";
 // import Add from "./Add";
 // import { NetworkType } from "@airgap/beacon-dapp";
-// // add funcction
+// add funcction
 
 // function App() {
-//   const [address, setAddress] = useState(null);
-//   const [wallet, setWallet] = useState(null);
-//   // eslint-disable-next-line no-unused-vars
-//   const [tezos, setTezos] = useState(new TezosToolkit("https://ghostnet.smartpy.io"));
-//   const [contract, setContract] = useState(null);
-//   const contractAddress = "KT1NHqPx3RMgzcVeTQhXCdvLnUtTR9h4Wfyx";
+// const [address, setAddress] = useState(null);
+// const [wallet, setWallet] = useState(null);
+// // eslint-disable-next-line no-unused-vars
+// const [tezos, setTezos] = useState(new TezosToolkit("https://ghostnet.smartpy.io"));
+// const [contract, setContract] = useState(null);
+// const contractAddress = "KT1NHqPx3RMgzcVeTQhXCdvLnUtTR9h4Wfyx";
 
 //   const setupWallet = async () => {
-//     try {
-//       await wallet.requestPermissions({
-//         network: {
-//           type: NetworkType.GHOSTNET,
-//           rpcUrl: "https://ghostnet.smartpy.io",
-//         },
-//       });
-//       // gets user's address
-//       let userAddress = await wallet.getPKH();
-//       setAddress(userAddress);
-//       let cc = await tezos.wallet.at(contractAddress);
-//       setContract(cc);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
+// try {
+//   await wallet.requestPermissions({
+//     network: {
+//       type: NetworkType.GHOSTNET,
+//       rpcUrl: "https://ghostnet.smartpy.io",
+//     },
+//   });
+//   // gets user's address
+//   let userAddress = await wallet.getPKH();
+//   setAddress(userAddress);
+//   let cc = await tezos.wallet.at(contractAddress);
+//   setContract(cc);
+// } catch (error) {
+//   console.log(error);
+// }
+// };
 //   const getDetails = async () => {
 //     console.log("contract", contract);
 //     console.log("wallet", wallet);
@@ -71,17 +74,17 @@ export default App;
 //     console.log(typeof address);
 //   };
 
-//   useEffect(() => {
-//     const options = {
-//       name: "Dapp",
-//       preferredNetwork: NetworkType.GHOSTNET,
-//       disableDefaultEvents: false,
-//     };
-//     console.log("Setting up Wallet..");
-//     const wallet = new BeaconWallet(options);
-//     tezos.setWalletProvider(wallet);
-//     setWallet(wallet);
-//   }, []);
+// useEffect(() => {
+//   const options = {
+//     name: "Dapp",
+//     preferredNetwork: NetworkType.GHOSTNET,
+//     disableDefaultEvents: false,
+//   };
+//   console.log("Setting up Wallet..");
+//   const wallet = new BeaconWallet(options);
+//   tezos.setWalletProvider(wallet);
+//   setWallet(wallet);
+// }, []);
 //   return (
 //     <>
 //       <button onClick={getDetails}> Get details</button>
