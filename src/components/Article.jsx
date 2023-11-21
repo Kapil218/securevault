@@ -119,7 +119,7 @@ const Support = () => {
       const imgs = storage.value.valueMap.get('"' + userAddress + '"');
       // setImages(imgs);
       console.log(userAddress);
-      console.log();
+      console.log(imgs);
       setImages(imgs);
     } catch (er) {
       console.log(er);
@@ -129,6 +129,11 @@ const Support = () => {
     e.preventDefault();
     setUserAddress(e.target.value);
     // console.log(userAddress);
+  };
+  const handleClick = (i) => {
+    // Your click event handling logic goes here
+    console.log('Image clicked!');
+    window.open(i, '_blank');
   };
   return (
     <div className="container">
@@ -194,10 +199,11 @@ const Support = () => {
 
       {/* Cards with Scroll Buttons */}
       {images.length && (
-        <div className="card-container">
-          {images.map((i, idx) => (
-            <div key={idx} className="card">
-              <img src={i} alt="" />
+        <div >
+          {images.map((i) => (
+            <div key={i} >
+              <img src={i} alt="" style={{ width: "600px" }} onClick={() => handleClick(i)} />
+
             </div>
           ))}
         </div>
