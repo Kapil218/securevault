@@ -13,7 +13,7 @@ function Home() {
             <p className="card-text my-4">
               Securing the legal world, one block at a Time
             </p>
-            <Link to="/" className="mx-1 mt-5 btn btn-outline-warning" data-mdb-ripple-color="dark">
+            <Link to="/article" className="mx-1 mt-5 btn btn-outline-warning" data-mdb-ripple-color="dark">
               Get Started
             </Link>
           </div>

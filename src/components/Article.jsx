@@ -14,6 +14,8 @@ const Support = () => {
   const containerRef = useRef();
   const [address, setAddress] = useState(null);
   const [wallet, setWallet] = useState(null);
+  const [loading, loadVal] = useState(false);
+  const [loading2, loadVal2] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [tezos, setTezos] = useState(new TezosToolkit("https://ghostnet.smartpy.io"));
   const [contract, setContract] = useState(null);
@@ -80,11 +82,10 @@ const Support = () => {
           Authorization: `Bearer ${pinataJwt}`,
         },
       });
-      //   console.log(res.data);
-      //   console.log(`View the file here: https://gateway.pinata.cloud/ipfs/${res.data.IpfsHash}`);
+
       const ImageUrl = `https://gateway.pinata.cloud/ipfs/${res.data.IpfsHash}`;
-      alert("Image uploaded successfully");
-      setFile(null);
+      loadVal(false);
+
 
       return ImageUrl;
     } catch (error) {
@@ -94,33 +95,40 @@ const Support = () => {
     }
   };
   const uploadFile = async (e) => {
+    loadVal(true);
     e.preventDefault();
     if (file) {
       console.log("got file", file);
       try {
         const ImgURL = await pinFileToIPFS();
-        console.log(ImgURL);
+        loadVal(false);
+        loadVal(true);
         const op = await contract.methods.add(ImgURL, address).send();
+        loadVal(false);
         await op.confirmation();
-        console.log("Transaction Successfull");
+        console.log("uploaded");
+        alert("Uploaded successfully")
       } catch (error) {
         console.log(error);
       }
     } else {
       alert("Please select a file!");
+      loadVal(false);
     }
   };
   const handleGetData = async (e) => {
     try {
-      e.preventDefault();
-      // const op = await contract.methods.display(userAddress).send();
-      // await op.confirmation();
-      const storage = await contract.storage();
-      const imgs = storage.value.valueMap.get('"' + userAddress + '"');
-      // setImages(imgs);
-      console.log(userAddress);
-      console.log(imgs);
-      setImages(imgs);
+      if (userAddress) {
+        loadVal2(true);
+        e.preventDefault();
+        // const op = await contract.methods.display(userAddress).send();
+        // await op.confirmation();
+        const storage = await contract.storage();
+        const imgs = storage.value.valueMap.get('"' + userAddress + '"');
+        // setImages(imgs);
+        setImages(imgs);
+        loadVal2(false);
+      }
     } catch (er) {
       console.log(er);
     }
@@ -128,56 +136,48 @@ const Support = () => {
   const getInputAddress = async (e) => {
     e.preventDefault();
     setUserAddress(e.target.value);
-    // console.log(userAddress);
   };
   const handleClick = (i) => {
     // Your click event handling logic goes here
-    console.log('Image clicked!');
     window.open(i, '_blank');
   };
   return (
     <div className="container">
       {/* Search Bar */}
-      {!con && (
-        <p className="d-flex flex-row-reverse ">
-          <button
-            type="button"
-            style={{ borderRadius: "16px" }}
-            className="btn btn-outline-light"
-            onClick={setupConnection}
-          >
-            <h5>Connect to Wallet</h5>
-          </button>
-        </p>
-      )}
       {con && (
         <>
-          <h5 className="text-center mb-3 mt-5">YOUR ACCOUNT</h5>
-          <h5 className="text-center ">
-            <span style={{ border: "1px solid white", padding: "5px", borderRadius: "10px" }}>
-              {address}
-            </span>
-          </h5>
-          <p className="d-flex flex-row-reverse">
+
+          <p className="d-flex justify-content-center flex-row-reverse">
+            <button
+              type="file"
+              style={{ borderRadius: "16px", fontSize: "20px" }}
+              className={`pl-5 pr-5  ml-5 btn btn-secondary ${loading ? 'disabled' : ''}`}
+              disabled={loading}
+              onClick={uploadFile}
+            >
+              {loading && (
+                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              )}
+              {loading ? 'Loading...' : 'Upload'}
+            </button>
             <input
               type="file"
-              className="file-upload"
+              className="btn btn-outline-info"
+              style={{ borderRadius: "16px", width: "130px" }}
               onChange={(e) => {
                 setFile(e.target.files[0]);
               }}
             />
-            <button
-              type="file"
-              style={{ borderRadius: "16px" }}
-              className="btn btn-outline-light"
-              onClick={uploadFile}
-            >
-              <h5>Upload</h5>
-            </button>
+          </p>
+          <h5 className="text-center mb-3 mt-5">YOUR ACCOUNT</h5>
+          <p className="text-center ">
+            <span style={{ border: "1px solid white", padding: "5px", borderRadius: "10px" }}>
+              {address}
+            </span>
           </p>
         </>
       )}
-      <div className="row justify-content-center mb-5">
+      <div className="row justify-content-center " style={{ margin: "3rem 0" }}>
         <div className="col-md-6">
           <div className="input-group mb-3">
             <input
@@ -189,22 +189,38 @@ const Support = () => {
               onChange={getInputAddress}
             />
             <div className="input-group-append">
-              <button className="btn btn-outline-secondary" type="button" onClick={handleGetData}>
-                Get Data
+              <button disabled={loading2} className=" btn btn-info" type="button" onClick={handleGetData}>
+                {loading && (
+                  <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                )}
+                {loading2 ? 'Loading...' : '  Get Data'}
               </button>
             </div>
           </div>
         </div>
       </div>
 
+      {!con && (
+        <p className="d-flex justify-content-center flex-row-reverse ">
+          <button
+            type="button"
+            style={{ borderRadius: "16px" }}
+            className="btn btn-primary text-light font-weight-bold"
+            onClick={setupConnection}
+          >
+            Connect to Wallet
+          </button>
+        </p>
+      )}
+
       {/* Cards with Scroll Buttons */}
       {images.length && (
         <div >
           {images.map((i) => (
-            <div key={i} >
-              <img src={i} alt="" style={{ width: "600px" }} onClick={() => handleClick(i)} />
+            <span key={i} >
+              <img src={i} alt="" style={{ height: "200px" }} onClick={() => handleClick(i)} />
 
-            </div>
+            </span>
           ))}
         </div>
       )}
