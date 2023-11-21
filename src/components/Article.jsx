@@ -116,10 +116,11 @@ const Support = () => {
       // const op = await contract.methods.display(userAddress).send();
       // await op.confirmation();
       const storage = await contract.storage();
-      const imgs = storage.value[userAddress];
+      const imgs = storage.value.valueMap.get('"' + userAddress + '"');
       // setImages(imgs);
       console.log(userAddress);
-      console.log(storage.value.valueMap.get(userAddress));
+      console.log();
+      setImages(imgs);
     } catch (er) {
       console.log(er);
     }
