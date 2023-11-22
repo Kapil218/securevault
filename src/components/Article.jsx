@@ -7,28 +7,28 @@ import React from "react";
 import "./article.css";
 import { useRef, useState, useEffect } from "react";
 
-const Support = () => {
+const Support = ({ contract, setContract, address, setAddress }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [con, setCon] = useState(false);
   const containerRef = useRef();
-  const [address, setAddress] = useState(null);
+  // const [address, setAddress] = useState(null);
   const [wallet, setWallet] = useState(null);
   const [loading, loadVal] = useState(false);
   const [loading2, loadVal2] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [tezos, setTezos] = useState(new TezosToolkit("https://ghostnet.smartpy.io"));
-  const [contract, setContract] = useState(null);
+  // const [contract, setContract] = useState(null);
   const [file, setFile] = useState(null);
   const [userAddress, setUserAddress] = useState(null);
   const [images, setImages] = useState([]);
-  const contractAddress = "KT19EYm7a6neGABTLHU1xfznhRybFcVmw4U8";
+  const contractAddress = "KT1V9xzYrd2mF5vVtXWUi4An1GVkcTfyMo4T";
   const accessToken = "u9J1vbaNdHDn4MpUEdHDiizTxiRb3OYR0u-4nBSspueL0MvCFQPvo8THjCZEPv_a";
   const pinataJwt =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJkYjRiY2QzMy04MTNhLTQ1ZjEtOGMxZS1iNjIzMmRiM2NkODEiLCJlbWFpbCI6ImFuc2hrYXVzaGlrOTUxOUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJpZCI6IkZSQTEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX0seyJpZCI6Ik5ZQzEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiNGFlOWY4Mjk4ZWQzYWJlMzJiMGIiLCJzY29wZWRLZXlTZWNyZXQiOiI5ZDNhMmUyOTJlNTlhZWM5OWU3YThkMTQ3NWNkNmE0OGZlMmU3Y2ExYzg5ZTU1MGY5NDQwNjkxNzNiNWY0YmQ0IiwiaWF0IjoxNzAwNTcyMzEzfQ.MfCg7GLtD08Pba2QZYYZJUTh_BYPMBKbG5PQwvFK38E"; // Replace with your actual Pinata JWT token
 
   useEffect(() => {
     const options = {
-      name: "Dapp",
+      name: "SECUREVAULT",
       preferredNetwork: NetworkType.GHOSTNET,
       disableDefaultEvents: false,
     };
@@ -85,7 +85,6 @@ const Support = () => {
       const ImageUrl = `https://gateway.pinata.cloud/ipfs/${res.data.IpfsHash}`;
       loadVal(false);
 
-
       return ImageUrl;
     } catch (error) {
       alert("Unable to upload file to Pinata");
@@ -102,7 +101,7 @@ const Support = () => {
         const ImgURL = await pinFileToIPFS();
         const op = await contract.methods.add(ImgURL, address).send();
         await op.confirmation();
-        alert("Uploaded successfully")
+        alert("Uploaded successfully");
       } catch (error) {
         console.log(error);
       }
@@ -120,8 +119,21 @@ const Support = () => {
         // await op.confirmation();
         const storage = await contract.storage();
         const imgs = storage.value.valueMap.get('"' + userAddress + '"');
+        console.log(storage);
+        if (imgs) setImages(imgs);
+        const accessibleaddress = storage.accessList.valueMap.get('"' + userAddress + '"');
+
+        if (accessibleaddress) {
+          console.log("got other addressses ", accessibleaddress);
+          accessibleaddress.map((ad) => {
+            const newImages = storage.value.valueMap.get('"' + ad + '"');
+            console.log(newImages);
+            if (newImages) setImages((images) => [images, ...newImages]);
+          });
+        }
+
         // setImages(imgs);
-        setImages(imgs);
+
         loadVal2(false);
       }
     } catch (er) {
@@ -134,26 +146,29 @@ const Support = () => {
   };
   const handleClick = (i) => {
     // Your click event handling logic goes here
-    window.open(i, '_blank');
+    window.open(i, "_blank");
   };
   return (
     <div className="container" style={{ overflow: "auto" }}>
       {/* Search Bar */}
       {con && (
         <>
-
           <p className="d-flex justify-content-center flex-row-reverse">
             <button
               type="file"
               style={{ borderRadius: "16px", fontSize: "20px" }}
-              className={`pl-5 pr-5  ml-5 btn btn-secondary ${loading ? 'disabled' : ''}`}
+              className={`pl-5 pr-5  ml-5 btn btn-secondary ${loading ? "disabled" : ""}`}
               disabled={loading}
               onClick={uploadFile}
             >
               {loading && (
-                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                <span
+                  className="spinner-border spinner-border-sm me-2"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
               )}
-              {loading ? 'Loading...' : 'Upload'}
+              {loading ? "Loading..." : "Upload"}
             </button>
             <input
               type="file"
@@ -184,11 +199,20 @@ const Support = () => {
               onChange={getInputAddress}
             />
             <div className="input-group-append">
-              <button disabled={loading2} className=" btn btn-info" type="button" onClick={handleGetData}>
+              <button
+                disabled={loading2}
+                className=" btn btn-info"
+                type="button"
+                onClick={handleGetData}
+              >
                 {loading && (
-                  <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                  <span
+                    className="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
                 )}
-                {loading2 ? 'Loading...' : '  Get Data'}
+                {loading2 ? "Loading..." : "  Get Data"}
               </button>
             </div>
           </div>
@@ -210,12 +234,16 @@ const Support = () => {
 
       {/* Cards with Scroll Buttons */}
 
-      {images.length && (
-
-        <div >
+      {images && images.length && (
+        <div>
           {images.map((i) => (
-            <span key={i} >
-              <img src={i} alt="" style={{ padding: "8px", height: "240px", width: "270px" }} onClick={() => handleClick(i)} />
+            <span key={i}>
+              <img
+                src={i}
+                alt=""
+                style={{ padding: "8px", height: "240px", width: "270px" }}
+                onClick={() => handleClick(i)}
+              />
             </span>
           ))}
         </div>
