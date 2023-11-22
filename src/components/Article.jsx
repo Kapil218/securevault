@@ -119,7 +119,8 @@ const Support = ({ contract, setContract, address, setAddress }) => {
         // await op.confirmation();
         const storage = await contract.storage();
         const imgs = storage.value.valueMap.get('"' + userAddress + '"');
-        console.log(storage);
+        console.log(imgs);
+        // console.log(storage);
         if (imgs) setImages(imgs);
         const accessibleaddress = storage.accessList.valueMap.get('"' + userAddress + '"');
 
@@ -128,7 +129,8 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           accessibleaddress.map((ad) => {
             const newImages = storage.value.valueMap.get('"' + ad + '"');
             console.log(newImages);
-            if (newImages) setImages((images) => [images, ...newImages]);
+            if (newImages) setImages((ig) => [...ig, ...newImages]);
+            console.log(images);
           });
         }
 
