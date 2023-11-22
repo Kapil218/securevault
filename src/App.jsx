@@ -1,3 +1,5 @@
+// add the beginning of your app entry
+import "vite/modulepreload-polyfill";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";

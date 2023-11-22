@@ -3,6 +3,7 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-dapp";
 import axios from "axios";
+
 import React from "react";
 import "./article.css";
 import { useRef, useState, useEffect } from "react";
