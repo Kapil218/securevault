@@ -43,8 +43,8 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/article" className="mx-1 btn btn-outline-info">
-                  Article
+                <Link to="/article" className="mx-1 btn btn-info">
+                  Services
                 </Link>
               </li>
               {/* <li className="nav-item">
@@ -57,11 +57,11 @@ function Navbar() {
                   Share
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/sign" className="mx-1 btn btn-info" data-mdb-ripple-color="dark">
                   Sign
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
