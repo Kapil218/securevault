@@ -10,6 +10,7 @@ import { useRef, useState, useEffect } from "react";
 
 const Support = ({ contract, setContract, address, setAddress }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [imagesAvl, setImageAvl] = useState(false);
   const [con, setCon] = useState(false);
   const containerRef = useRef();
   // const [address, setAddress] = useState(null);
@@ -113,6 +114,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
   };
   const handleGetData = async (e) => {
     try {
+      setImageAvl(true);
       if (userAddress) {
         loadVal2(true);
         e.preventDefault();
@@ -123,6 +125,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
         console.log(imgs);
         // console.log(storage);
         if (imgs) setImages(imgs);
+
         const accessibleaddress = storage.accessList.valueMap.get('"' + userAddress + '"');
 
         if (accessibleaddress) {
@@ -136,7 +139,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
         }
 
         // setImages(imgs);
-
+        setImageAvl(false);
         loadVal2(false);
       }
     } catch (er) {
@@ -222,8 +225,9 @@ const Support = ({ contract, setContract, address, setAddress }) => {
         </div>
       </div>
 
-      {!con && (
-        <p className="d-flex justify-content-center flex-row-reverse ">
+      {!con && (<div>
+
+        <div className="d-flex justify-content-center flex-row-reverse ">
           <button
             type="button"
             style={{ borderRadius: "16px" }}
@@ -232,11 +236,23 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           >
             Connect to Wallet
           </button>
-        </p>
+        </div>
+      </div>
+
       )}
 
       {/* Cards with Scroll Buttons */}
 
+
+      {imagesAvl && (
+        <div>
+          <div className="d-flex justify-content-center">
+            <div style={{ width: "3rem", height: "3rem" }} class=" mt-5 spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+      )}
       {images && images.length && (
         <div>
           {images.map((i) => (
