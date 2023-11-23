@@ -114,6 +114,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
   };
   const handleGetData = async (e) => {
     try {
+      setImages([]);
       setImageAvl(true);
       if (userAddress) {
         loadVal2(true);
@@ -253,13 +254,13 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           </div>
         </div>
       )}
-      {images && images.length && (
+      {images && images.length != 0 && (
         <div>
           {images.map((i) => (
             <span key={i}>
               <img
                 src={i}
-                alt=""
+                alt="Loading................."
                 style={{ padding: "8px", height: "240px", width: "270px" }}
                 onClick={() => handleClick(i)}
               />
