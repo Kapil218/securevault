@@ -52,8 +52,12 @@ https://ghostnet.tzkt.io/KT1V9xzYrd2mF5vVtXWUi4An1GVkcTfyMo4T/entrypoints
  ## 3. Share Access
  ![image](https://github.com/Kapil218/securevault/assets/90231718/6cce9b01-8fac-42fe-a5a1-a7af30d1d62d)
 
-
-
+## Future Scope
+Features to be implemented in future.
+1. ### Onboarding Off-chain Database through chain link CCIP protocol.
+2. ### Version Control of documents.
+3. ### Pinning and unpinnig of images.
+   
 
 
 
