@@ -43,6 +43,16 @@ Path: `./src/contract/vault`
 
 Check Contract Status here:
 https://ghostnet.tzkt.io/KT1V9xzYrd2mF5vVtXWUi4An1GVkcTfyMo4T/entrypoints
+## Preview
+  ## 1.Homepage
+  
+ ![image](https://github.com/Kapil218/securevault/assets/90231718/ac5f0f0d-fabc-42eb-a27b-ec212a0b7a63)
+  ## 2.Services
+ ![image](https://github.com/Kapil218/securevault/assets/90231718/811bc425-4a1c-4a9c-a478-55133ec9c35a)
+ ## 3. Share Access
+ ![image](https://github.com/Kapil218/securevault/assets/90231718/6cce9b01-8fac-42fe-a5a1-a7af30d1d62d)
+
+
 
 
 
