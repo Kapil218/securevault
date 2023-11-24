@@ -13,13 +13,12 @@ const Support = ({ contract, setContract, address, setAddress }) => {
   const [imagesAvl, setImageAvl] = useState(false);
   const [con, setCon] = useState(false);
   const containerRef = useRef();
-  // const [address, setAddress] = useState(null);
   const [wallet, setWallet] = useState(null);
   const [loading, loadVal] = useState(false);
   const [loading2, loadVal2] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [tezos, setTezos] = useState(new TezosToolkit("https://ghostnet.smartpy.io"));
-  // const [contract, setContract] = useState(null);
+
   const [file, setFile] = useState(null);
   const [userAddress, setUserAddress] = useState(null);
   const [images, setImages] = useState([]);
@@ -39,18 +38,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
     tezos.setWalletProvider(wallet);
     setWallet(wallet);
   }, []);
-
-  // Function to handle scrolling when the button is clicked
-  const handleScroll = (scrollAmount) => {
-    // Calculate the new scroll position
-    const newScrollPosition = scrollPosition + scrollAmount;
-
-    // Update the state with the new scroll position
-    setScrollPosition(newScrollPosition);
-
-    // Access the container element and set its scrollLeft property
-    containerRef.current.scrollLeft = newScrollPosition;
-  };
+  // to Setup Connection
   const setupConnection = async (e) => {
     e.preventDefault();
     try {
@@ -70,13 +58,12 @@ const Support = ({ contract, setContract, address, setAddress }) => {
       console.log(error);
     }
   };
-
+  // pinning file to IPFS
   const pinFileToIPFS = async () => {
     try {
       let data = new FormData();
       data.append("file", file);
       data.append("pinataOptions", '{"cidVersion": 0}');
-      //   data.append("pinataMetadata", '{"name": "pinnie"}');
 
       const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", data, {
         headers: {
@@ -95,15 +82,12 @@ const Support = ({ contract, setContract, address, setAddress }) => {
     }
   };
   const copyAddress = (e) => {
-    // address.select();
-    // address.setSelectionRange(0, 99999); // For mobile devices
-
-    // Copy the text inside the text field
     navigator.clipboard.writeText(address);
 
-    // Alert the copied text
     alert("Id copied ready to paste ");
   };
+
+  // Uploading File
   const uploadFile = async (e) => {
     loadVal(true);
     e.preventDefault();
@@ -121,7 +105,6 @@ const Support = ({ contract, setContract, address, setAddress }) => {
       alert("Please select a file!");
       loadVal(false);
     }
-    // loadVal(false);
   };
   const handleGetData = async (e) => {
     try {
@@ -130,12 +113,10 @@ const Support = ({ contract, setContract, address, setAddress }) => {
       if (userAddress) {
         loadVal2(true);
         e.preventDefault();
-        // const op = await contract.methods.display(userAddress).send();
-        // await op.confirmation();
+
         const storage = await contract.storage();
         const imgs = storage.value.valueMap.get('"' + userAddress + '"');
-        console.log(imgs);
-        // console.log(storage);
+
         if (imgs) setImages(imgs);
 
         const accessibleaddress = storage.accessList.valueMap.get('"' + userAddress + '"');
@@ -150,7 +131,6 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           });
         }
 
-        // setImages(imgs);
         setImageAvl(false);
         loadVal2(false);
       }
@@ -163,7 +143,6 @@ const Support = ({ contract, setContract, address, setAddress }) => {
     setUserAddress(e.target.value);
   };
   const handleClick = (i) => {
-    // Your click event handling logic goes here
     window.open(i, "_blank");
   };
   return (
@@ -252,8 +231,6 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           </div>
         </div>
       )}
-
-      {/* Cards with Scroll Buttons */}
 
       {imagesAvl && (
         <div className="d-flex justify-content-center">

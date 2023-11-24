@@ -1,14 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import logoImage from '../assets/securevault-logo-design-blockchain-based-778006610_clipdrop-background-removal 1.png';
+import React from "react";
+import { Link } from "react-router-dom";
+import logoImage from "../assets/securevault-logo-design-blockchain-based-778006610_clipdrop-background-removal 1.png";
 
 function Navbar() {
-
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark  " style={{ background: "#222831", opacity: "0.9" }}>
+      <nav
+        className="navbar navbar-expand-lg navbar-dark  "
+        style={{ background: "#222831", opacity: "0.9" }}
+      >
         <div className="container-fluid">
-
           <a className="navbar-brand" href="/">
             <img
               alt="Logo"
@@ -47,6 +48,7 @@ function Navbar() {
                   Services
                 </Link>
               </li>
+              {/*For  Future Implementataion  */}
               {/* <li className="nav-item">
                 <Link to="/support" className="mx-1 btn btn-outline-info" data-mdb-ripple-color="dark">
                   Support
@@ -57,6 +59,7 @@ function Navbar() {
                   Share
                 </Link>
               </li>
+              {/*For  Future Implementataion  */}
               {/* <li className="nav-item">
                 <Link to="/sign" className="mx-1 btn btn-info" data-mdb-ripple-color="dark">
                   Sign

@@ -14,9 +14,7 @@ function Form() {
     e.preventDefault();
     const { name, email, password } = formData;
     console.log("Form data:", { name, email, password });
-    // User.create({ name: "hi", email: "k@gia.om", password: "fdgfdrgrg" });
-    // axios.get("http://localhost:3000/api").then((res) => {
-    // });
+
     const res = await axios.post(url + "/create", {
       name,
       email,
