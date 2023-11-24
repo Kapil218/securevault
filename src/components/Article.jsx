@@ -94,6 +94,16 @@ const Support = ({ contract, setContract, address, setAddress }) => {
       console.log(error);
     }
   };
+  const copyAddress = (e) => {
+    // address.select();
+    // address.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(address);
+
+    // Alert the copied text
+    alert("Id copied ready to paste ");
+  };
   const uploadFile = async (e) => {
     loadVal(true);
     e.preventDefault();
@@ -163,7 +173,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           <p className="d-flex justify-content-center flex-row-reverse">
             <button
               type="file"
-              style={{ borderRadius: "16px", fontSize: "20px" }}
+              style={{ fontSize: "20px" }}
               className={`pl-5 pr-5  ml-5 btn btn-secondary ${loading ? "disabled" : ""}`}
               disabled={loading}
               onClick={uploadFile}
@@ -180,7 +190,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
             <input
               type="file"
               className="btn btn-outline-info"
-              style={{ borderRadius: "16px", width: "130px" }}
+              style={{ width: "130px" }}
               onChange={(e) => {
                 setFile(e.target.files[0]);
               }}
@@ -188,9 +198,9 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           </p>
           <h5 className="text-center mb-3 mt-5">YOUR ACCOUNT</h5>
           <p className="text-center ">
-            <span style={{ border: "1px solid white", padding: "5px", borderRadius: "10px" }}>
-              {address}
-            </span>
+            <button className="btn btn-secondary" onClick={copyAddress}>
+              Copy Your wallet Address
+            </button>
           </p>
         </>
       )}
@@ -246,40 +256,29 @@ const Support = ({ contract, setContract, address, setAddress }) => {
 
 
       {imagesAvl && (
-        <div>
-          <div className="d-flex justify-content-center">
-            <div style={{ width: "3rem", height: "3rem" }} className=" mt-5 spinner-border" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
+
+        <div className="d-flex justify-content-center">
+          <div style={{ width: "3rem", height: "3rem" }} className=" mt-5 spinner-border" role="status">
+            <span className="sr-only">Loading...</span>
           </div>
         </div>
+
       )}
-      {/* 
-      <div className="card" style="width: 18rem;">
-  <img className="card-img-top" src="..." alt="Card image cap">
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" className="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-      */}
+
       {images && images.length != 0 && (
-        <div class="row">
-          <div class="col-sm">
-            One of three columns
-          </div>
+        <div className="row">
           {images.map((i) => (
-            <span >
-              <div className="card" style={{ width: "12rem" }} >
-                <img
-                  src={i}
-                  alt="Loading................."
-                  style={{ padding: "8px" }}
-                  onClick={() => handleClick(i)}
-                />
-              </div>
-            </span>
+
+            <div className="card m-3 bg-dark" style={{ width: "21rem", }} >
+              <img
+                src={i}
+                alt="Loading................."
+                style={{ background: "#222831", height: "21rem", objectFit: "cover" }}
+
+              />
+              <button onClick={() => handleClick(i)} className="btn btn-info p-0">< i style={{ fontSize: "1.5rem" }} className="bi bi-eye-fill "></i></button>
+            </div>
+
           ))}
         </div>
       )}
