@@ -75,9 +75,9 @@ https://ghostnet.tzkt.io/KT1V9xzYrd2mF5vVtXWUi4An1GVkcTfyMo4T/entrypoints
 
 ## Future Scope
 Features to be implemented in future.
-1. ### Onboarding Off-chain Database through chain link CCIP protocol.
-2. ### Version Control of documents.
-3. ### Pinning and unpinnig of images.
+ ### 1. Onboarding Off-chain Database through chain link CCIP protocol.
+ ### 2. Version Control of documents.
+ ### 3. Pinning and unpinnig of images.
    
 
 
