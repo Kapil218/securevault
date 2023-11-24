@@ -10,6 +10,7 @@ import { useRef, useState, useEffect } from "react";
 
 const Support = ({ contract, setContract, address, setAddress }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [imagesAvl, setImageAvl] = useState(false);
   const [con, setCon] = useState(false);
   const containerRef = useRef();
   // const [address, setAddress] = useState(null);
@@ -113,6 +114,8 @@ const Support = ({ contract, setContract, address, setAddress }) => {
   };
   const handleGetData = async (e) => {
     try {
+      setImages([]);
+      setImageAvl(true);
       if (userAddress) {
         loadVal2(true);
         e.preventDefault();
@@ -123,6 +126,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
         console.log(imgs);
         // console.log(storage);
         if (imgs) setImages(imgs);
+
         const accessibleaddress = storage.accessList.valueMap.get('"' + userAddress + '"');
 
         if (accessibleaddress) {
@@ -136,7 +140,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
         }
 
         // setImages(imgs);
-
+        setImageAvl(false);
         loadVal2(false);
       }
     } catch (er) {
@@ -222,8 +226,9 @@ const Support = ({ contract, setContract, address, setAddress }) => {
         </div>
       </div>
 
-      {!con && (
-        <p className="d-flex justify-content-center flex-row-reverse ">
+      {!con && (<div>
+
+        <div className="d-flex justify-content-center flex-row-reverse ">
           <button
             type="button"
             style={{ borderRadius: "16px" }}
@@ -232,21 +237,48 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           >
             Connect to Wallet
           </button>
-        </p>
+        </div>
+      </div>
+
       )}
 
       {/* Cards with Scroll Buttons */}
 
-      {images && images.length && (
+
+      {imagesAvl && (
         <div>
+          <div className="d-flex justify-content-center">
+            <div style={{ width: "3rem", height: "3rem" }} className=" mt-5 spinner-border" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* 
+      <div className="card" style="width: 18rem;">
+  <img className="card-img-top" src="..." alt="Card image cap">
+  <div className="card-body">
+    <h5 className="card-title">Card title</h5>
+    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" className="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+      */}
+      {images && images.length != 0 && (
+        <div class="row">
+          <div class="col-sm">
+            One of three columns
+          </div>
           {images.map((i) => (
-            <span key={i}>
-              <img
-                src={i}
-                alt=""
-                style={{ padding: "8px", height: "240px", width: "270px" }}
-                onClick={() => handleClick(i)}
-              />
+            <span >
+              <div className="card" style={{ width: "12rem" }} >
+                <img
+                  src={i}
+                  alt="Loading................."
+                  style={{ padding: "8px" }}
+                  onClick={() => handleClick(i)}
+                />
+              </div>
             </span>
           ))}
         </div>
