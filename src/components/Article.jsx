@@ -121,6 +121,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
       alert("Please select a file!");
       loadVal(false);
     }
+    // loadVal(false);
   };
   const handleGetData = async (e) => {
     try {
@@ -173,14 +174,14 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           <p className="d-flex justify-content-center flex-row-reverse">
             <button
               type="file"
-              style={{ fontSize: "20px" }}
-              className={`pl-5 pr-5  ml-5 btn btn-secondary ${loading ? "disabled" : ""}`}
+              style={{ fontSize: "20px", display: "flex", alignItems: "center" }}
+              className={`pl-5 pr-5  ml-5 btn btn-secondary ${loading ? "disabled" : ""} `}
               disabled={loading}
               onClick={uploadFile}
             >
               {loading && (
                 <span
-                  className="spinner-border spinner-border-sm me-2"
+                  className="spinner-border spinner-border-s mr-2"
                   role="status"
                   aria-hidden="true"
                 ></span>
@@ -221,10 +222,11 @@ const Support = ({ contract, setContract, address, setAddress }) => {
                 className=" btn btn-info"
                 type="button"
                 onClick={handleGetData}
+                style={{ display: "flex", alignItems: "center" }}
               >
-                {loading && (
+                {loading2 && (
                   <span
-                    className="spinner-border spinner-border-sm me-2"
+                    className="spinner-border spinner-border-sm mr-2"
                     role="status"
                     aria-hidden="true"
                   ></span>
@@ -236,49 +238,48 @@ const Support = ({ contract, setContract, address, setAddress }) => {
         </div>
       </div>
 
-      {!con && (<div>
-
-        <div className="d-flex justify-content-center flex-row-reverse ">
-          <button
-            type="button"
-            style={{ borderRadius: "16px" }}
-            className="btn btn-primary text-light font-weight-bold"
-            onClick={setupConnection}
-          >
-            Connect to Wallet
-          </button>
+      {!con && (
+        <div>
+          <div className="d-flex justify-content-center flex-row-reverse ">
+            <button
+              type="button"
+              style={{ borderRadius: "16px" }}
+              className="btn btn-primary text-light font-weight-bold"
+              onClick={setupConnection}
+            >
+              Connect to Wallet
+            </button>
+          </div>
         </div>
-      </div>
-
       )}
 
       {/* Cards with Scroll Buttons */}
 
-
       {imagesAvl && (
-
         <div className="d-flex justify-content-center">
-          <div style={{ width: "3rem", height: "3rem" }} className=" mt-5 spinner-border" role="status">
+          <div
+            style={{ width: "3rem", height: "3rem" }}
+            className=" mt-5 spinner-border"
+            role="status"
+          >
             <span className="sr-only">Loading...</span>
           </div>
         </div>
-
       )}
 
       {images && images.length != 0 && (
         <div className="row">
           {images.map((i) => (
-
-            <div className="card m-3 bg-dark" style={{ width: "21rem", }} >
+            <div className="card m-3 bg-dark" style={{ width: "21rem" }}>
               <img
                 src={i}
                 alt="Loading................."
                 style={{ background: "#222831", height: "21rem", objectFit: "cover" }}
-
               />
-              <button onClick={() => handleClick(i)} className="btn btn-info p-0">< i style={{ fontSize: "1.5rem" }} className="bi bi-eye-fill "></i></button>
+              <button onClick={() => handleClick(i)} className="btn btn-info p-0">
+                <i style={{ fontSize: "1.5rem" }} className="bi bi-eye-fill "></i>
+              </button>
             </div>
-
           ))}
         </div>
       )}
