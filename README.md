@@ -38,6 +38,27 @@
    For more information read the [Vite Guide](https://vitejs.dev/guide/static-deploy.html)
 
  Now we can run the app. 
+## Build with:
+  <div align="center">
+  <code><img width="50" src="https://github.com/Kapil218/securevault/assets/90231718/856757c2-f978-452c-9272-b25a59238add" alt="tezos" title="tezos"/></code>
+  <code><img width="50" src="https://github.com/Kapil218/securevault/assets/90231718/e45594a2-75fc-4481-8f63-ebb8638abe4d" alt="smartpy" title="smartpy"/></code>
+	<code><img width="50" src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" title="Node.js"/></code>
+	<code><img width="50" src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" alt="React" title="React"/></code>
+	<code><img width="50" src="https://github.com/marwin1991/profile-technology-icons/assets/62091613/b40892ef-efb8-4b0e-a6b5-d1cfc2f3fc35" alt="Vite" title="Vite"/></code>
+	<code><img width="50" src="https://github.com/Kapil218/securevault/assets/90231718/ce4da4fa-75bf-4339-8f5b-4c4fb4ccf8f0" alt="pinata" title="pinata"/></code>
+	<code><img width="50" src="https://user-images.githubusercontent.com/25181517/192108891-d86b6220-e232-423a-bf5f-90903e6887c3.png" alt="VSCode" title="Visual Studio Code"/></code>
+	<code><img width="50" src="https://user-images.githubusercontent.com/25181517/183898054-b3d693d4-dafb-4808-a509-bab54cf5de34.png" alt="Bootstrap" title="Bootstrap"/></code>
+	<code><img width="50" src="https://user-images.githubusercontent.com/25181517/121401671-49102800-c959-11eb-9f6f-74d49a5e1774.png" alt="npm" title="npm"/></code>
+ 
+     
+
+
+  
+
+
+
+</div>
+ 
 ## Contract 
 Path: `./src/contract/vault`
 
@@ -54,9 +75,9 @@ https://ghostnet.tzkt.io/KT1V9xzYrd2mF5vVtXWUi4An1GVkcTfyMo4T/entrypoints
 
 ## Future Scope
 Features to be implemented in future.
-1. ### Onboarding Off-chain Database through chain link CCIP protocol.
-2. ### Version Control of documents.
-3. ### Pinning and unpinnig of images.
+ ### 1. Onboarding Off-chain Database through chain link CCIP protocol.
+ ### 2. Version Control of documents.
+ ### 3. Pinning and unpinnig of images.
    
 
 
