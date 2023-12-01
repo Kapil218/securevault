@@ -6,13 +6,11 @@ import axios from "axios";
 
 import React from "react";
 import "./article.css";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Support = ({ contract, setContract, address, setAddress }) => {
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [imagesAvl, setImageAvl] = useState(false);
-  const [con, setCon] = useState(false);
-  const containerRef = useRef();
+  const [con, setCon] = useState(false); //connection
   const [wallet, setWallet] = useState(null);
   const [loading, loadVal] = useState(false);
   const [loading2, loadVal2] = useState(false);
@@ -23,10 +21,9 @@ const Support = ({ contract, setContract, address, setAddress }) => {
   const [userAddress, setUserAddress] = useState(null);
   const [images, setImages] = useState([]);
   const contractAddress = "KT1V9xzYrd2mF5vVtXWUi4An1GVkcTfyMo4T";
-  const accessToken = "u9J1vbaNdHDn4MpUEdHDiizTxiRb3OYR0u-4nBSspueL0MvCFQPvo8THjCZEPv_a";
   const pinataJwt =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJkYjRiY2QzMy04MTNhLTQ1ZjEtOGMxZS1iNjIzMmRiM2NkODEiLCJlbWFpbCI6ImFuc2hrYXVzaGlrOTUxOUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJpZCI6IkZSQTEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX0seyJpZCI6Ik5ZQzEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiNGFlOWY4Mjk4ZWQzYWJlMzJiMGIiLCJzY29wZWRLZXlTZWNyZXQiOiI5ZDNhMmUyOTJlNTlhZWM5OWU3YThkMTQ3NWNkNmE0OGZlMmU3Y2ExYzg5ZTU1MGY5NDQwNjkxNzNiNWY0YmQ0IiwiaWF0IjoxNzAwNTcyMzEzfQ.MfCg7GLtD08Pba2QZYYZJUTh_BYPMBKbG5PQwvFK38E"; // Replace with your actual Pinata JWT token
-
+  //   setting up wallet credentials
   useEffect(() => {
     const options = {
       name: "SECUREVAULT",
@@ -81,6 +78,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
       console.log(error);
     }
   };
+  // copy address to clipboard
   const copyAddress = (e) => {
     navigator.clipboard.writeText(address);
 
@@ -106,6 +104,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
       loadVal(false);
     }
   };
+  // handling fetching  of  images
   const handleGetData = async (e) => {
     try {
       setImages([]);
@@ -138,16 +137,19 @@ const Support = ({ contract, setContract, address, setAddress }) => {
       console.log(er);
     }
   };
+  // handling wallet addresss input field
   const getInputAddress = async (e) => {
     e.preventDefault();
     setUserAddress(e.target.value);
   };
+  // open images in new Tab
   const handleClick = (i) => {
     window.open(i, "_blank");
   };
+  // entire jsx
   return (
     <div className="container" style={{ overflow: "auto" }}>
-      {/* Search Bar */}
+      {/* when wallet is  connected   */}
       {con && (
         <>
           <p className="d-flex justify-content-center flex-row-reverse">
@@ -184,6 +186,25 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           </p>
         </>
       )}
+      {/* when wallet is  connected   */}
+
+      {/* when wallet is  not  connected   */}
+      {!con && (
+        <div>
+          <div className="d-flex justify-content-center flex-row-reverse ">
+            <button
+              type="button"
+              style={{ borderRadius: "16px" }}
+              className="btn btn-primary text-light font-weight-bold"
+              onClick={setupConnection}
+            >
+              Connect to Wallet
+            </button>
+          </div>
+        </div>
+      )}
+      {/* when wallet is  not  connected   */}
+
       <div className="row justify-content-center " style={{ margin: "3rem 0" }}>
         <div className="col-md-6">
           <div className="input-group mb-3">
@@ -217,21 +238,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
         </div>
       </div>
 
-      {!con && (
-        <div>
-          <div className="d-flex justify-content-center flex-row-reverse ">
-            <button
-              type="button"
-              style={{ borderRadius: "16px" }}
-              className="btn btn-primary text-light font-weight-bold"
-              onClick={setupConnection}
-            >
-              Connect to Wallet
-            </button>
-          </div>
-        </div>
-      )}
-
+      {/* WHEN IMAGES NOT AVAILABLE TO DISPLAY */}
       {imagesAvl && (
         <div className="d-flex justify-content-center">
           <div
@@ -243,6 +250,9 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           </div>
         </div>
       )}
+      {/* WHEN IMAGES NOT AVAILABLE TO DISPLAY */}
+
+      {/* WHEN IMAGES ARE AVAILABLE TO DISPLAY */}
 
       {images && images.length != 0 && (
         <div className="row">
@@ -260,6 +270,7 @@ const Support = ({ contract, setContract, address, setAddress }) => {
           ))}
         </div>
       )}
+      {/* WHEN IMAGES ARE AVAILABLE TO DISPLAY */}
     </div>
   );
 };
