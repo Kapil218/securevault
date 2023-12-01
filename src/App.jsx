@@ -5,9 +5,8 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Article from "./components/Article";
-// import Support from "./components/Support";
 import Share from "./components/Share";
-// import Form from "./components/FormComponent";
+
 function App() {
   const [contract, setContract] = useState(null);
   const [address, setAddress] = useState(null);
@@ -37,7 +36,7 @@ function App() {
               />
             }
           />
-          {/* <Route path="/support" element={<Support />} /> */}
+
           <Route
             path="/article"
             element={
@@ -49,7 +48,6 @@ function App() {
               />
             }
           />
-          {/* <Route path="/sign" element={<Form />} /> */}
         </Routes>
       </div>
     </Router>
