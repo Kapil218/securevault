@@ -1,7 +1,17 @@
-# SECUREVAULT
-<img width="150" alt="homeimage-removebg-preview" src="https://github.com/Kapil218/securevault/assets/90231718/14fdf9eb-2fba-431b-8afb-43d0df0f4313">
+
+ <h1>SECUREVAULT </h1>
+<img width="100"  alt="homeimage-removebg-preview" src="https://github.com/Kapil218/securevault/assets/90231718/14fdf9eb-2fba-431b-8afb-43d0df0f4313">
 
 ## EMPOWERING BLOCKCHAIN STORAGE
+ SECUREVAULT, an advanced online application leveraging Tezos blockchain and React.js, pioneers a decentralized and highly secure file-sharing network. With a focus on robust architecture, the platform addresses pressing concerns related to data security and privacy. Key features include document upload to IPFS with Tezos transactions, Beacon wallet integration for secure connections, data retrieval based on user addresses, and a user-friendly file-sharing function.
+
+ ### Functionality Provided by the dApp:
+   - *Upload functionality:* Enables users to securely upload documents to IPFS while conducting transactions on the Tezos blockchain.
+   - *Connection with Beacon Wallet:* Integrates with Beacon wallets like Temple to establish secure connections with the application.
+   - *Get Data functionality:* Allows users to input an address and retrieve associated documents, streamlining data access.
+   - *Sharing functionality:* Facilitates secure sharing of files between users, enhancing collaboration and accessibility.
+
+
 ## Checkout SECUREVAULT here: https://securevault.vercel.app/
 
 ## Getting Started
