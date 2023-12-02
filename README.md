@@ -11,8 +11,11 @@
    - *Get Data functionality:* Allows users to input an address and retrieve associated documents, streamlining data access.
    - *Sharing functionality:* Facilitates secure sharing of files between users, enhancing collaboration and accessibility.
 
+  ### Showcase Video:  [here][link]
 
-## Checkout SECUREVAULT here: https://securevault.vercel.app/
+  [link]:https://www.loom.com/share/0cc5c25634e74e46991a4f3dbe9d5c3e?sid=63f5320e-c2d0-4235-bb76-cd5cf9313d89
+
+###  Checkout SECUREVAULT here: https://securevault.vercel.app/
 
 ## Getting Started
 
@@ -33,7 +36,7 @@
 
 6. Open http://localhost:5173/ in your browser to see a sample application.
 
-## Building the App
+## Building the dApp
 
 1. Run the command:
 
