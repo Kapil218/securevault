@@ -93,5 +93,6 @@ Features to be implemented in future.
  ### 3. Pinning and unpinnig of images.
    
 
-
+### Contact: 
+For any query , contact at kapilsinghrathore218@gmail.com  , sarthakmittal1259@gmail.com.
 
